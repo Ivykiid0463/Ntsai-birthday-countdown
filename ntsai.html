@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counting Down for Ntsai</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="card">
+    <p class="subtitle">CHAPTER XXII</p>
+    <h1>Counting down to your day, Ntsai</h1>
+    <div class="divider"></div>
+    
+    <div id="timer">
+      <div class="time-block">
+        <span id="days">00</span>
+        <label>DAYS</label>
+      </div>
+      <div class="colon">:</div>
+      <div class="time-block">
+        <span id="hours">00</span>
+        <label>HOURS</label>
+      </div>
+      <div class="colon">:</div>
+      <div class="time-block">
+        <span id="minutes">00</span>
+        <label>MINS</label>
+      </div>
+      <div class="colon">:</div>
+      <div class="time-block">
+        <span id="seconds">00</span>
+        <label>SECS</label>
+      </div>
+    </div>
+
+    <p class="footnote">15 • 11 • 2026 — *Still the prettiest chapter yet.*</p>
+  </div>
+
+  <script>
+    const targetDate = new Date('November 15, 2026 00:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById('days').innerText = String(d).padStart(2, '0');
+        document.getElementById('hours').innerText = String(h).padStart(2, '0');
+        document.getElementById('minutes').innerText = String(m).padStart(2, '0');
+        document.getElementById('seconds').innerText = String(s).padStart(2, '0');
+      }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
